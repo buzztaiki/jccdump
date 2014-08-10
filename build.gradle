@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+group = 'com.github.buzztaiki'
+version = '1.0'
+
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
+
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile files("${System.properties['java.home']}/../lib/tools.jar")
+  compile files("${System.properties['java.home']}/../lib/sa-jdi.jar")
+}
+
+task run(type: JavaExec) {
+  main = 'com.github.buzztaiki.jccdump.Main'
+  classpath = sourceSets.main.runtimeClasspath
+  args = ['2320']
+}
